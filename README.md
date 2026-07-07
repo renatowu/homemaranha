@@ -1,5 +1,7 @@
 # Homem-Aranha 8-bit 🕷️
 
+[![Deploy PWA to GitHub Pages](https://github.com/renatowu/homemaranha/actions/workflows/deploy.yml/badge.svg)](https://github.com/renatowu/homemaranha/actions/workflows/deploy.yml)
+
 Jogo de plataforma/ação em estilo 8-bit, feito em um único arquivo HTML com `<canvas>` puro — sem dependências. Balance nas teias, atire bolas de teia, pegue power-ups e enfrente o chefão **Duende Verde**.
 
 Jogar: **https://renatowu.github.io/homemaranha/**
