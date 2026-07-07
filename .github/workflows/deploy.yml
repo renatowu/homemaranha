@@ -1,0 +1,47 @@
+name: Deploy PWA to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Só um deploy por vez; cancela runs antigos em andamento
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Cada deploy recebe um nome de cache único (SHA do commit),
+      # forçando o service worker a atualizar para os jogadores.
+      - name: Versiona o cache do service worker
+        run: |
+          VER="${GITHUB_SHA::7}"
+          sed -i "s/const CACHE = \"[^\"]*\";/const CACHE = \"aranha8bit-${VER}\";/" sw.js
+          echo "Cache do SW -> aranha8bit-${VER}"
+          grep -n "const CACHE" sw.js
+
+      - name: Configura Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empacota o site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publica no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
