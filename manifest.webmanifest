@@ -1,0 +1,17 @@
+{
+  "name": "Homem-Aranha 8-bit",
+  "short_name": "Aranha 8-bit",
+  "description": "Jogo 8-bit: balance nas teias, atire bolas de teia e enfrente o Duende Verde.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0b0b16",
+  "theme_color": "#0b0b16",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
